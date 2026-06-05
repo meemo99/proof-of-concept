@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #52599D;
+    --secondary-color: #9C95CA;
+    --tertiary-colot: #C8C8E2;
+    --primary-bg: #E6E6F1;
+    --primary-textcolor: white;
+    --secondary-textcolor: black;
+
+}
+
+body {
+    background-color: var(--primary-bg);
+}
+
+header {
+    background-color: white;
+    width: auto;
+    height: auto;
+}
+
+.ctc-logo {
+    object-fit: contain;
+
+}
+
+footer {
+    background-color: black;
+    width: auto;
+    height: auto;
+}
