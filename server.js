@@ -7,12 +7,17 @@ const app = express()
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
-const engine = new Liquid()
-app.engine('liquid', engine.express())
+const engine = new Liquid({
+    root: './views',
+    extname: '.liquid'
+})
 
+app.engine('liquid', engine.express())
+app.set('view engine', 'liquid')
 app.set('views', './views')
+
 app.get('/', async function (req, res) {
-    const apiResponse = await fetch('https://fdnd-agency.directus.app/items/ctc_smartzone/')
+    const apiResponse = await fetch(`https://fdnd-agency.directus.app/items/ctc_smartzone/`)
     const apiResponseJSON = await apiResponse.json()
     res.render('index.liquid', { cities: apiResponseJSON.data })
 })
@@ -21,6 +26,9 @@ app.get('/dashboard/:city', async function (req, res) {
     const apiResponse = await fetch('https://fdnd-agency.directus.app/items/ctc_smartzone/?filter[city][_eq]=${req.params.city}')
     const apiResponseJSON = await apiResponse.json()
     res.render('dashboard.liquid', { city: apiResponseJSON.data })
+app.get('/form', async function (req, res) {
+
+    res.render('form.liquid')
 })
 
 app.set('port', process.env.PORT || 8000)
