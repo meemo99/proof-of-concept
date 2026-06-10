@@ -24,8 +24,11 @@ app.get('/', async function (req, res) {
 
 app.get('/dashboard/:city', async function (req, res) {
     const apiResponse = await fetch('https://fdnd-agency.directus.app/items/ctc_smartzone/?filter[city][_eq]=${req.params.city}')
+app.get('/dashboard/:city/:address', async function (req, res) {
+    const apiResponse = await fetch(`https://fdnd-agency.directus.app/items/ctc_smartzone/?filter[address][_eq]=${req.params.address}`)
     const apiResponseJSON = await apiResponse.json()
-    res.render('dashboard.liquid', { city: apiResponseJSON.data })
+    res.render('details.liquid', { spot: apiResponseJSON.data[0] })
+})
 app.get('/form', async function (req, res) {
 
     res.render('form.liquid')
