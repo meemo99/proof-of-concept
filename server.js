@@ -38,6 +38,33 @@ app.get('/form', async function (req, res) {
     res.render('form.liquid')
 })
 
+app.post('/form', async function (req, res) {
+
+    let postResponse = await fetch('...', {
+        method: 'POST',
+        body: JSON.stringify({
+            comment: req.body.comment,
+            address: req.body.address,
+            picture: req.body.picture,
+            city: req.body.city,
+            length: req.body.length,
+            time: req.body.time,
+            monitoring_suitability: req.body.monitoring_suitability,
+            status: req.body.status,
+            long: req.body.long,
+            lat: req.body.lat,
+            smart_suitability: req.body.smart_suitability,
+            traffic_sign: req.body.traffic_sign,
+        }),
+        headers: {
+            'Content-type': 'application/json;charset=UTF-8'
+        }
+    })
+
+    if (!postResponse.ok) {
+        return res.redirect(303, '/')
+    }
+})
 
 app.set('port', process.env.PORT || 8000)
 app.listen(app.get('port'), function () {
