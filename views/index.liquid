@@ -1,13 +1,15 @@
 {% render 'partials/head.liquid' %}
-<section>
+
 {% for city in cities %}
+    <section>
     <a href="/dashboard/{{ city.city }}"><h2>{{ city.city }}</h2></a>
     <img
         src="https://fdnd-agency.directus.app/assets/{{ city.picture}}?width=600&quality=80"
      
         alt="{{ city.address }}">
     <h3>{{ city.address }}</h3>
+    </section>
 {% endfor %}
-</section>
+
 </body>
 {% render 'partials/foot.liquid' %}
