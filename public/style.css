@@ -29,6 +29,65 @@ header {
 
 }
 
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    width: 330px;
+    aspect-ratio: 1/1;
+    gap: 10px;
+    padding: 10px;
+
+}
+
+textarea[name="address"] {
+    grid-column: 1/-1;
+    width: 100%;
+}
+
+textarea[name="comment"] {
+    grid-column: 1/-1;
+    height: auto;
+}
+
+button {
+    height: 38px;
+    border-radius: 16px;
+    background-color: var(--tertiary-color);
+    border: none;
+    color: var(--primary-color);
+    transition: 0.5s ease-in-out;
+
+    &:hover {
+        background-color: var(--secondary-color);
+        color: var(--tertiary-color);
+        scale: 1.15;
+    }
+}
+
+.upload-dummy {
+    background-color: rgb(206, 206, 206);
+    width: 330px;
+    height: 230px;
+    border-radius: 16px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+
+.form-input,
+textarea {
+    background-color: var(--tertiary-color);
+    border-radius: 16px;
+    height: 38px;
+    margin-bottom: 10px;
+    border: none;
+    width: 100%;
+    text-align: center;
+
+}
+
+
+
 footer {
     background-color: black;
     width: auto;
