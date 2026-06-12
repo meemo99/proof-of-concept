@@ -92,6 +92,27 @@ a {
     justify-content: center;
     align-items: center;
 }
+
+
+.total-data {
+    background-color: var(--tertiary-color);
+    border-radius: 16px;
+    width: 338px;
+    height: 117px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.location {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
 form {
     display: grid;
     grid-template-columns: repeat(2, 2fr);
