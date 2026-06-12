@@ -2,19 +2,26 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
 }
+
 
 :root {
     --primary-color: #52599D;
     --secondary-color: #9C95CA;
-    --tertiary-colot: #C8C8E2;
+    --tertiary-color: #C8C8E2;
     --primary-bg: #E6E6F1;
     --primary-textcolor: white;
     --secondary-textcolor: black;
 
 }
 
+h1 {
+    color: white;
+}
+
 body {
+    font-family: "DM Sans", sans-serif;
     background-color: var(--primary-bg);
 }
 
@@ -29,6 +36,19 @@ header {
 
 }
 
+.card {
+    background: var(--primary-color);
+    border-radius: 16px;
+    width: 370px;
+    height: auto;
+    padding-top: 5px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 form {
     display: grid;
     grid-template-columns: repeat(2, 2fr);
