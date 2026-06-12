@@ -1,16 +1,17 @@
 {% render 'partials/head.liquid' %}
 <section class="card">
   <div class="upload-dummy"></div>
-<form method="POST">
-  <input list="status">
+<form method="POST" action="/quickscan-form">
+  <textarea name="address" rows="2"></textarea>
+
+  <input class="form-input" name="status" list="status">
   <datalist id="status"> 
     <option value="Vrij">
     <option value="Bezet">
     <option value="Overtreding">
     <option value="Bestaat Niet">
   </datalist>
-
-  <input list="monitoring">
+  <input class="form-input" name="monitoring_suitability" list="monitoring">
   <datalist id="monitoring">
     <option value="Geschikt">
     <option value="Zeer Geschikt">
@@ -18,21 +19,22 @@
     <option value="Neutraal">
   </datalist>
 
-  <input list="smartzone">
+  <input class="form-input" name="smartzone_suitability" list="smartzone">
   <datalist id="smartzone">
     <option value="Geschikt">
     <option value="Zeer Geschikt">
     <option value="Ongeschikt">
     <option value="Neutraal">
   </datalist>
+  <textarea name="traffic_sign" rows="2"></textarea>
 
-  <textarea name="address" rows="2" cols="15"></textarea>
-  <textarea name="trafficsign" rows="2" cols="15"></textarea>
-  <textarea name="time" rows="2" cols="15"></textarea>
-  <textarea name="length" rows="2" cols="15"></textarea>
-  <textarea name="comment" rows="auto" cols="20"></textarea>
+  <textarea name="time" rows="2" type="time" min="00:00:00" max="23:59:59"></textarea>
+  <textarea name="length" rows="2"></textarea>
 
-  <button type="button">Opslaan</button>
+
+  <textarea name="comment" rows="3"></textarea>
+
+  <button type="submit">Opslaan</button>
 </form>
 </section>
 {% render 'partials/foot.liquid' %}
