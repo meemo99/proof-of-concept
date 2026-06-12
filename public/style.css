@@ -136,6 +136,14 @@ a {
 #analytics:target {
     display: block;
 }
+.tag {
+    background-color: #C8C8E2;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    border-radius: 16px;
+    text-align: center;
+}
 form {
     display: grid;
     grid-template-columns: repeat(2, 2fr);
