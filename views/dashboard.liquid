@@ -23,6 +23,35 @@
                 <button class="add-button"> <a href="/form"> +</a></button>
     </section>
     <section id="locaties" class='tab-content card'>
+        <section class="location-card">
+          {% for city in cities %}
+          <img src="https://fdnd-agency.directus.app/assets/{{ city.picture }}?width=600&quality=80" alt="{{ city.address }}">
+          <a href="/dashboard/{{ city.city }}/{{ city.address }}">
+              <p>{{ city.address }}</p>
+          </a>
+      {% endfor %}
+        </section>
+
+        <section class="location-card">
+          <picture class="location-img">
+            <img src="/assets/download(2).png" alt="Oranje Nassaulaan 1">
+          </picture>
+          <a href="#"><p>Oranje Nassaulaan 1</p></a>
+        </section>
+
+        <section class="location-card">
+          <picture class="location-img">
+            <img src="/assets/download(2).png" alt="Oranje Nassaulaan 6">
+          </picture>
+          <a href="#"><p>Oranje Nassaulaan 6</p></a>
+        </section>
+
+        <section class="location-card">
+          <picture class="location-img">
+            <img src="/assets/download(2).png" alt="Oranje Nassaulaan 24">
+          </picture>
+          <a href="#"><p>Oranje Nassaulaan 24</p></a>
+        </section>
     </section>
 </section>
 </body>
