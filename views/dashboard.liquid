@@ -1,4 +1,6 @@
 {% render 'partials/head.liquid' %}
+<main>
+    <h1> QuickScan 's Hertogenbosch</h1>
   <section class="card-container">
     <nav class="tabs-container">
       <a href="#analytics" class="tab active">Analytics</a>
@@ -22,6 +24,7 @@
 
                 <button class="add-button"> <a href="/form"> +</a></button>
     </section>
+
     <section id="locaties" class='tab-content card'>
         <section class="location-card">
           {% for city in cities %}
@@ -53,6 +56,8 @@
           <a href="#"><p>Oranje Nassaulaan 24</p></a>
         </section>
     </section>
+
 </section>
+    </main>
 </body>
 {% render 'partials/foot.liquid' %}
