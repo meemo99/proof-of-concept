@@ -31,6 +31,49 @@ header {
     height: auto;
 }
 
+.tabs-container {
+    display: flex;
+    margin-bottom: -33px;
+}
+
+.tab {
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    padding: 5px;
+    padding-bottom: 30px;
+    color: white;
+    width: 107px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 0;
+
+    &:hover {
+        background-color: var(--tertiary-color);
+    }
+
+    &.active {
+        background-color: var(--primary-color);
+        position: relative;
+        z-index: 1;
+    }
+}
+
+
+
+li {
+    list-style: none;
+    color: white;
+    margin-top: 20px;
+
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
 .ctc-logo {
     object-fit: contain;
 
