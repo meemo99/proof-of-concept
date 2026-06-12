@@ -34,36 +34,38 @@ app.get('/dashboard/:city/:address', async function (req, res) {
     res.render('details.liquid', { spot: apiResponseJSON.data[0] })
 })
 app.get('/form', async function (req, res) {
-
+    const apiResponse = await fetch(`https://fdnd-agency.directus.app/items/ctc_smartzone/`)
+    const apiResponseJSON = await apiResponse.json()
     res.render('form.liquid')
 })
+app.post('/quickscan-form', async function (req, res) {
+    console.log('req.body:', req.body)  // check if form data is coming in
 
-app.post('/form', async function (req, res) {
-
-    let postResponse = await fetch('...', {
+    let postResponse = await fetch('https://fdnd-agency.directus.app/items/ctc_smartzone/', {
         method: 'POST',
         body: JSON.stringify({
             comment: req.body.comment,
             address: req.body.address,
-            picture: req.body.picture,
-            city: req.body.city,
             length: req.body.length,
             time: req.body.time,
-            monitoring_suitability: req.body.monitoring_suitability,
+            traffic_sign: req.body.trafficsign,
             status: req.body.status,
-            long: req.body.long,
-            lat: req.body.lat,
-            smart_suitability: req.body.smart_suitability,
-            traffic_sign: req.body.traffic_sign,
+            monitoring_suitability: req.body.monitoring_suitability,
+            smartzone_suitability: req.body.smartzone_suitability,
         }),
         headers: {
             'Content-type': 'application/json;charset=UTF-8'
         }
     })
 
+    console.log('Directus status:', postResponse.status)  // check Directus response
+    const responseBody = await postResponse.json()
+    console.log('Directus response:', JSON.stringify(responseBody, null, 2))       // see exact error
+
     if (!postResponse.ok) {
-        return res.redirect(303, '/')
+        return res.send("Error!")
     }
+    return res.redirect(303, '/dashboard')
 })
 
 app.set('port', process.env.PORT || 8000)
