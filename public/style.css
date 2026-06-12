@@ -136,6 +136,28 @@ a {
 #analytics:target {
     display: block;
 }
+
+.location-card {
+    margin: 10px;
+    margin-top: 14px;
+}
+
+img {
+    object-fit: cover;
+    width: 145px;
+    height: 130px;
+    border-radius: 16px;
+}
+
+.add-button {
+    border-radius: 38px;
+    background-color: var(--secondary-color);
+    color: white;
+    width: 70px;
+    height: 61px;
+
+}
+
 .tag {
     background-color: #C8C8E2;
     width: auto;
