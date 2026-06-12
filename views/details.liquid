@@ -1,5 +1,29 @@
 
 {% render 'partials/head.liquid' %}
 <section class='card'>
+<h1>{{ spot.address }}</h1>
+
+
+<img
+  src="https://fdnd-agency.directus.app/assets/{{ spot.picture }}?width=600&quality=80"
+  alt="{{ spot.address }}"
+>
+    <section class="data">
+        <ul>
+          <p>Status</p>
+          <li class="tag">{{ spot.status }}</li>
+            <p>Length</p>
+          <li class="tag">{{ spot.length }}</li>
+            <p>Time</p>
+          <li class="tag">{{ spot.time }}</li>
+            <p>Trafficsign</p>
+          <li class="tag">{{ spot.traffic_sign }}</li>
+            <p>Monitoring Suitability</p>
+          <li class="tag">{{ spot.monitoring_suitability }}</li>
+            <p>Smart Zone Suitability</p>
+          <li class="tag">{{ spot.smartzone_suitability }}</li>
+        </ul>
+    </section>
 </section>
+</body>
 {% render 'partials/foot.liquid' %}
