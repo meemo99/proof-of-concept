@@ -144,6 +144,10 @@ a {
     border-radius: 16px;
     text-align: center;
 }
+
+.data {
+    display: flex;
+    flex-direction: column;
 form {
     display: grid;
     grid-template-columns: repeat(2, 2fr);
