@@ -113,6 +113,29 @@ a {
     align-items: center;
     justify-content: center;
 }
+
+.tab-content {
+    display: none;
+}
+
+
+#analytics {
+    display: block;
+}
+
+#locaties:target {
+    display: block;
+    background-color: #52599D;
+}
+
+.card-container:has(#locaties:target) #analytics {
+    display: none;
+    background-color: #C8C8E2;
+}
+
+#analytics:target {
+    display: block;
+}
 form {
     display: grid;
     grid-template-columns: repeat(2, 2fr);
