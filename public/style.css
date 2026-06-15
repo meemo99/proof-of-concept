@@ -5,12 +5,11 @@
 
 }
 
-
 :root {
-    --primary-color: #52599D;
-    --secondary-color: #9C95CA;
-    --tertiary-color: #C8C8E2;
-    --primary-bg: #E6E6F1;
+    --primary-color: #52599d;
+    --secondary-color: #9c95ca;
+    --tertiary-color: #c8c8e2;
+    --primary-bg: #e6e6f1;
     --primary-textcolor: white;
     --secondary-textcolor: black;
 
@@ -21,14 +20,14 @@ h1 {
 }
 
 body {
-    font-family: "DM Sans", sans-serif;
     background-color: var(--primary-bg);
+    font-family: "DM Sans", sans-serif;
 }
 
 header {
     background-color: white;
-    width: auto;
     height: auto;
+    width: auto;
 }
 
 .tabs-container {
@@ -39,14 +38,14 @@ header {
 .tab {
     background-color: var(--secondary-color);
     border-radius: 8px;
-    padding: 5px;
-    padding-bottom: 30px;
     color: white;
-    width: 107px;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
+    padding: 5px;
+    padding-bottom: 30px;
     text-align: center;
+    width: 107px;
     z-index: 0;
 
     &:hover {
@@ -60,13 +59,10 @@ header {
     }
 }
 
-
-
 li {
-    list-style: none;
     color: white;
     margin-top: 20px;
-
+    list-style: none;
 }
 
 a {
@@ -80,37 +76,44 @@ a {
 }
 
 .card {
+    align-items: center;
     background: var(--primary-color);
     border-radius: 16px;
-    width: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     height: auto;
+    width: 370px;
     padding-top: 5px;
     position: relative;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+    @media (min-width: 744px) {
+        width: 670px;
+    }
 }
 
-
 .total-data {
+    align-items: center;
     background-color: var(--tertiary-color);
     border-radius: 16px;
-    width: 338px;
-    height: 117px;
     display: flex;
     flex-direction: column;
+    height: 117px;
     justify-content: center;
-    align-items: center;
     margin: 20px;
+    width: 338px;
+
+    @media (min-width: 744px) {
+        width: 274px;
+    }
 }
 
 .location {
+    align-items: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
 }
 
@@ -124,47 +127,52 @@ a {
 }
 
 #locaties:target {
-    display: block;
-    background-color: #52599D;
+    display: flex;
 }
 
 .card-container:has(#locaties:target) #analytics {
     display: none;
-    background-color: #C8C8E2;
 }
 
 #analytics:target {
-    display: block;
+    display: flex;
+
+    @media (min-width: 744px) {
+        aspect-ratio: 1/1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .location-card {
     margin: 10px;
     margin-top: 14px;
+
 }
 
 img {
+    border-radius: 16px;
+    height: 130px;
     object-fit: cover;
     width: 145px;
-    height: 130px;
-    border-radius: 16px;
 }
 
 .add-button {
     border-radius: 38px;
     background-color: var(--secondary-color);
     color: white;
-    width: 70px;
     height: 61px;
+    width: 70px;
 
 }
 
 .tag {
-    background-color: #C8C8E2;
-    width: auto;
+    background-color: var(--tertiary-color);
+    border-radius: 16px;
     height: auto;
     padding: 5px;
-    border-radius: 16px;
     text-align: center;
+    width: auto;
 }
 
 .data {
@@ -175,21 +183,19 @@ img {
 .chart {
     background: conic-gradient(#E6E6F1 45%, #9C95CA 0deg 70%, #C8C8E2 0deg);
     border-radius: 50%;
-    width: 50%;
+    margin: 10px;
     padding-top: 50%;
     padding-right: 20px;
-    margin: 10px;
-
+    width: 50%;
 }
 
 form {
+    aspect-ratio: 1/1;
     display: grid;
     grid-template-columns: repeat(2, 2fr);
-    width: 330px;
-    aspect-ratio: 1/1;
     gap: 10px;
     padding: 10px;
-
+    width: 330px;
 }
 
 textarea[name="address"] {
@@ -219,30 +225,27 @@ button {
 
 .upload-dummy {
     background-color: rgb(206, 206, 206);
-    width: 330px;
-    height: 230px;
     border-radius: 16px;
+    height: 230px;
     margin-bottom: 10px;
     margin-top: 10px;
-
+    width: 330px;
 }
 
 .form-input,
 textarea {
     background-color: var(--tertiary-color);
     border-radius: 16px;
+    border: none;
     height: 38px;
     margin-bottom: 10px;
-    border: none;
     width: 100%;
     text-align: center;
-
 }
-
-
 
 footer {
     background-color: black;
-    width: auto;
     height: auto;
+    width: auto;
+
 }
