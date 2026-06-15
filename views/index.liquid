@@ -11,7 +11,7 @@
             fetchpriority="high"
             alt="{{ city.address }}">
     {% else %}
-        <img src="/assets/download.png" fetchpriority="high">
+        <img src="/assets/download.png" loading="lazy" fetchpriority="high">
     {% endif %}
 </section>
 {% endfor %}

@@ -34,9 +34,9 @@
                 srcset="https://fdnd-agency.directus.app/assets/{{ city.picture }}?fit=cover&width=1600&quality=80" alt="{{ city.address }}">
                 <source type="image/webp"
                 srcset="https://fdnd-agency.directus.app/assets/{{ city.picture }}?fit=cover&width=1600&quality=80" alt="{{ city.address }}">
-                <img src="https://fdnd-agency.directus.app/assets/{{ city.picture }}?width=600&quality=80" alt="{{ city.address }} loading="lazy" fetchpriority="high"">
+                <img src="https://fdnd-agency.directus.app/assets/{{ city.picture }}?width=600&quality=80" alt="{{ city.address }}" loading="lazy" fetchpriority="high">
                 {% else %}
-                  <img src="/assets/download.png" fetchpriority="high">
+                  <img src="/assets/download.png" loading="lazy" fetchpriority="high">
                 {% endif %}
               </picture>
             
