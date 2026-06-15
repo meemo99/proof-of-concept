@@ -1,6 +1,8 @@
 {% render 'partials/head.liquid' %}
 <main>
-    <h1> QuickScan 's Hertogenbosch</h1>
+  {% for city in cities %}
+    <h2> QuickScan {{ city.city }}</h2>
+  {% endfor %}
   <section class="card-container">
     <nav class="tabs-container">
       <a href="#analytics" class="tab active">Analytics</a>
@@ -11,53 +13,41 @@
         <section class="monitoring total-data">
             <p><strong>11/38</strong></p>
             <br> <p>Geschikt voor Monitoring</p>
-            </section>
-            <section class="smart-zone total-data">
-                <p><strong>11/38</strong> </p>
-                <br><p>Geschikt voor Smart Zone</p>
-              </section>
-            
-                <section class="chart">
-                </section>
-                <section class= "chart">
-                </section>
-
-                <button class="add-button"> <a href="/form"> +</a></button>
+        </section>
+        <section class="smart-zone total-data">
+            <p><strong>11/38</strong> </p>
+            <br><p>Geschikt voor Smart Zone</p>
+        </section>
+        
+        <section class="chart">
+        </section>
+        <section class="chart">
+        </section>
     </section>
 
-    <section id="locaties" class='tab-content card'>
+    <section id="locaties" class="tab-content card">
         <section class="location-card">
           {% for city in cities %}
-          <img src="https://fdnd-agency.directus.app/assets/{{ city.picture }}?width=600&quality=80" alt="{{ city.address }}">
-          <a href="/dashboard/{{ city.city }}/{{ city.address }}">
-              <p>{{ city.address }}</p>
-          </a>
-      {% endfor %}
+            <picture>
+              {% if city.picture %}
+                <source type="image/avif"
+                srcset="https://fdnd-agency.directus.app/assets/{{ city.picture }}?fit=cover&width=1600&quality=80" alt="{{ city.address }}">
+                <source type="image/webp"
+                srcset="https://fdnd-agency.directus.app/assets/{{ city.picture }}?fit=cover&width=1600&quality=80" alt="{{ city.address }}">
+                <img src="https://fdnd-agency.directus.app/assets/{{ city.picture }}?width=600&quality=80" alt="{{ city.address }} loading="lazy" fetchpriority="high"">
+                {% else %}
+                  <img src="/assets/download.png" fetchpriority="high">
+                {% endif %}
+              </picture>
+            
+            <a href="/dashboard/{{ city.city }}/{{ city.address }}">
+                <p>{{ city.address }}</p>
+            </a>
+          {% endfor %}
         </section>
-
-        <section class="location-card">
-          <picture class="location-img">
-            <img src="/assets/download(2).png" alt="Oranje Nassaulaan 1">
-          </picture>
-          <a href="#"><p>Oranje Nassaulaan 1</p></a>
-        </section>
-
-        <section class="location-card">
-          <picture class="location-img">
-            <img src="/assets/download(2).png" alt="Oranje Nassaulaan 6">
-          </picture>
-          <a href="#"><p>Oranje Nassaulaan 6</p></a>
-        </section>
-
-        <section class="location-card">
-          <picture class="location-img">
-            <img src="/assets/download(2).png" alt="Oranje Nassaulaan 24">
-          </picture>
-          <a href="#"><p>Oranje Nassaulaan 24</p></a>
-        </section>
+        <button class="add-button" > <a href="/form">Voeg toe</a></button>
     </section>
-
-</section>
-    </main>
+  </section>
+</main>
 </body>
 {% render 'partials/foot.liquid' %}

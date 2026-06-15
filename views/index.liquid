@@ -1,15 +1,20 @@
 {% render 'partials/head.liquid' %}
-
+<h1>Coding the Curbs</h1>
+<main>
 {% for city in cities %}
-    <section>
-    <a href="/dashboard/{{ city.city }}"><h2>{{ city.city }}</h2></a>
-    <img
-        src="https://fdnd-agency.directus.app/assets/{{ city.picture}}?width=600&quality=80"
-     
-        alt="{{ city.address }}">
-    <h3>{{ city.address }}</h3>
-    </section>
+<section>
+    <h2> <a href="/dashboard/{{ city.city }}">{{ city.city }}</a></h2>
+    {% if city.picture %}
+        <img
+            src="https://fdnd-agency.directus.app/assets/{{ city.picture}}?width=600&quality=80"
+            loading="lazy" 
+            fetchpriority="high"
+            alt="{{ city.address }}">
+    {% else %}
+        <img src="/assets/download.png" fetchpriority="high">
+    {% endif %}
+</section>
 {% endfor %}
-
+</main>
 </body>
 {% render 'partials/foot.liquid' %}

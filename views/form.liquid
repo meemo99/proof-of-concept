@@ -2,16 +2,17 @@
 <section class="card">
   <div class="upload-dummy"></div>
 <form method="POST" action="/quickscan-form">
-  <textarea name="address" rows="2"></textarea>
+  <input type="hidden" name="city" value="{{ city }}">
+  <textarea name="address" rows="2" placeholder="Adres"></textarea>
 
-  <input class="form-input" name="status" list="status">
+  <input class="form-input" name="status" list="status" placeholder="Status">
   <datalist id="status"> 
     <option value="Vrij">
     <option value="Bezet">
     <option value="Overtreding">
     <option value="Bestaat Niet">
   </datalist>
-  <input class="form-input" name="monitoring_suitability" list="monitoring">
+  <input class="form-input" name="monitoring_suitability" list="monitoring" placeholder="Monitoring">
   <datalist id="monitoring">
     <option value="Geschikt">
     <option value="Zeer Geschikt">
@@ -19,20 +20,19 @@
     <option value="Neutraal">
   </datalist>
 
-  <input class="form-input" name="smartzone_suitability" list="smartzone">
+  <input class="form-input" name="smartzone_suitability" list="smartzone" placeholder="Smart Zone">
   <datalist id="smartzone">
     <option value="Geschikt">
     <option value="Zeer Geschikt">
     <option value="Ongeschikt">
     <option value="Neutraal">
   </datalist>
-  <textarea name="traffic_sign" rows="2"></textarea>
+  <textarea name="traffic_sign" rows="2" placeholder="Verkeersbord"></textarea>
 
-  <textarea name="time" rows="2" type="time" min="00:00:00" max="23:59:59"></textarea>
-  <textarea name="length" rows="2"></textarea>
+  <textarea name="time" rows="2" placeholder="Tijd"></textarea>
+  <textarea name="length" rows="2" placeholder="Lengte"></textarea>
 
-
-  <textarea name="comment" rows="3"></textarea>
+  <textarea name="comment" rows="3" placeholder="Opmerkingen"></textarea>
 
   <button type="submit">Opslaan</button>
 </form>
