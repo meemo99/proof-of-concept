@@ -15,13 +15,20 @@
 
 }
 
-h1 {
+@view-transition {
+    navigation: auto;
+}
+
+
+
+h1,
+h2 {
     color: white;
 }
 
 body {
     background-color: var(--primary-bg);
-    font-family: "DM Sans", sans-serif;
+    font-family: 'DM Sans', sans-serif;
 }
 
 header {
@@ -30,9 +37,48 @@ header {
     width: auto;
 }
 
+.index-grid {
+    @media(min-width: 45em) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media(min-width: 55em) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+.city-container {
+    width: 330px;
+    background-color: var(--primary-color);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    text-align: center;
+}
+
+.city-img {
+    border-radius: 16px;
+
+}
+
 .tabs-container {
     display: flex;
     margin-bottom: -33px;
+    margin-left: -156px;
+
+    @media(min-width: 45em) {
+        margin-left: -456px;
+    }
+
+
+    @media (min-width: 85em) {
+        margin-left: -456px;
+    }
 }
 
 .tab {
@@ -72,7 +118,9 @@ a {
 
 .ctc-logo {
     object-fit: contain;
-
+    width: 108px;
+    height: 37px;
+    margin: 8px;
 }
 
 .card {
@@ -88,9 +136,19 @@ a {
     position: relative;
     z-index: 1;
 
-    @media (min-width: 744px) {
+    @media (min-width: 45em) {
         width: 670px;
     }
+
+    @media (min-width: 85em) {}
+
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
 }
 
 .total-data {
@@ -102,12 +160,10 @@ a {
     height: 117px;
     justify-content: center;
     margin: 20px;
-    width: 338px;
-
-    @media (min-width: 744px) {
-        width: 274px;
-    }
+    width: 90%;
 }
+
+
 
 .location {
     align-items: center;
@@ -117,6 +173,26 @@ a {
     justify-content: center;
 }
 
+.breadcrumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: var(--secondary-color);
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    margin: 8px;
+    font-weight: bold;
+}
+
+.breadcrumb a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-color);
+}
+
+
 .tab-content {
     display: none;
 }
@@ -124,10 +200,34 @@ a {
 
 #analytics {
     display: block;
+
+    @media (min-width: 45em) {
+        aspect-ratio: 1/1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
+
+    @media (min-width: 85em) {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+
+    }
 }
 
 #locaties:target {
     display: flex;
+
+
+    @media (min-width: 45em) {
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        justify-items: center;
+    }
+
+    @media (min-width: 85em) {}
 }
 
 .card-container:has(#locaties:target) #analytics {
@@ -137,32 +237,46 @@ a {
 #analytics:target {
     display: flex;
 
-    @media (min-width: 744px) {
+    @media (min-width: 45em) {
         aspect-ratio: 1/1;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
+
+    @media (min-width: 85em) {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+
     }
 }
 
 .location-card {
     margin: 10px;
     margin-top: 14px;
+    text-align: center;
+    background-color: var(--primary-color);
+    border-radius: 16px;
+    ;
+}
 
+#locaties {
+    background-color: var(--secondary-color);
 }
 
 img {
-    border-radius: 16px;
     height: 130px;
     object-fit: cover;
-    width: 145px;
+    width: auto;
 }
 
 .add-button {
     border-radius: 38px;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: white;
     height: 61px;
     width: 70px;
+    text-align: center;
 
 }
 
