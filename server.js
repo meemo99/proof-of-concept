@@ -17,7 +17,7 @@ app.set('view engine', 'liquid')
 app.set('views', './views')
 
 app.get('/', async function (req, res) {
-    const apiResponse = await fetch(`https://fdnd-agency.directus.app/items/ctc_smartzone/`)
+    const apiResponse = await fetch(`https://fdnd-agency.directus.app/items/ctc_smartzone/?fields=city&groupBy=city`)
     const apiResponseJSON = await apiResponse.json()
     res.render('index.liquid', { cities: apiResponseJSON.data })
 })
@@ -25,7 +25,10 @@ app.get('/', async function (req, res) {
 app.get('/dashboard/:city', async function (req, res) {
     const cityResponse = await fetch(`https://fdnd-agency.directus.app/items/ctc_smartzone/?filter[city][_eq]=${req.params.city}`)
     const cityResponseJSON = await cityResponse.json()
-    res.render('dashboard.liquid', { cities: cityResponseJSON.data })
+    res.render('dashboard.liquid', {
+        cities: cityResponseJSON.data,
+        cityName: req.params.city
+    })
 })
 
 app.get('/dashboard/:city/:address', async function (req, res) {
@@ -33,11 +36,13 @@ app.get('/dashboard/:city/:address', async function (req, res) {
     const apiResponseJSON = await apiResponse.json()
     res.render('details.liquid', { spot: apiResponseJSON.data[0] })
 })
+
 app.get('/form', async function (req, res) {
     const apiResponse = await fetch(`https://fdnd-agency.directus.app/items/ctc_smartzone/`)
     const apiResponseJSON = await apiResponse.json()
     res.render('form.liquid')
 })
+
 app.post('/quickscan-form', async function (req, res) {
     console.log('req.body:', req.body)  // check if form data is coming in
 
@@ -46,15 +51,15 @@ app.post('/quickscan-form', async function (req, res) {
         body: JSON.stringify({
             comment: req.body.comment,
             address: req.body.address,
-            length: req.body.length,
-            time: req.body.time,
+            // length: req.body.length,
+            // time: req.body.time,
             traffic_sign: req.body.trafficsign,
             status: req.body.status,
             monitoring_suitability: req.body.monitoring_suitability,
             smartzone_suitability: req.body.smartzone_suitability,
         }),
         headers: {
-            'Content-type': 'application/json;charset=UTF-8'
+            'Content-Type': 'application/json;charset=UTF-8'
         }
     })
 
@@ -65,7 +70,7 @@ app.post('/quickscan-form', async function (req, res) {
     if (!postResponse.ok) {
         return res.send("Error!")
     }
-    return res.redirect(303, '/dashboard')
+    return res.redirect(303, '/form?city=${req.body.city}')
 })
 
 app.set('port', process.env.PORT || 8000)
