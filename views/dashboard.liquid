@@ -1,10 +1,15 @@
 {% render 'partials/head.liquid' %}
 <main>
-  {% for city in cities %}
-    <h2> QuickScan {{ city.city }}</h2>
-  {% endfor %}
+  <nav arialabel="breadcrumb" class="breadcrumb">
+    <a href="/">← Homepagina</a>
+      <span>/</span>
+      <span>{{ cityName }}</span>
+      </nav>
+  <h1> QuickScan {{ cityName }}</h1>
+  
+
   <section class="card-container">
-    <nav class="tabs-container">
+    <nav arialabel="tabs" class="tabs-container">
       <a href="#analytics" class="tab active">Analytics</a>
       <a href="#locaties" class="tab">Locaties</a>
     </nav>
@@ -45,7 +50,8 @@
             </a>
           {% endfor %}
         </section>
-        <button class="add-button" > <a href="/form">Voeg toe</a></button>
+      {% endfor %}
+      <button class="add-button"><a href="/form">Voeg toe</a></button>
     </section>
   </section>
 </main>
