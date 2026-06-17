@@ -1,5 +1,13 @@
 
 {% render 'partials/head.liquid' %}
+
+<nav arialabel="breadcrumb" class="breadcrumb">
+    <a href="/">← Homepagina</a>
+      <span>/</span>
+      <a href="/dashboard/{{ spot.city }}">{{ spot.city }}</a>
+      <span>/</span>
+      <span>{{ spot.address }}</span>
+      </nav>
 <section class='card'>
 <h1>{{ spot.address }}</h1>
 
