@@ -2,18 +2,31 @@
 <h1>Coding the Curbs</h1>
 <main>
 {% for city in cities %}
-<section>
-    <h2> <a href="/dashboard/{{ city.city }}">{{ city.city }}</a></h2>
-    {% if city.picture %}
-        <img
-            src="https://fdnd-agency.directus.app/assets/{{ city.picture}}?width=600&quality=80"
-            loading="lazy" 
-            fetchpriority="high"
-            alt="{{ city.address }}">
-    {% else %}
-        <img src="/assets/download.png" loading="lazy" fetchpriority="high">
-    {% endif %}
-</section>
+    <section class="city-container">
+        
+        {% if city.picture %}
+            <picture class="city-img">
+                <source type="image/avif"
+                srcset="https://fdnd-agency.directus.app/assets/{{ city.picture}}?width=600&quality=80"
+                loading="lazy" 
+                fetchpriority="high"
+                alt="{{ city.address }}"">
+                 <source type="image/webp"
+                 srcset="https://fdnd-agency.directus.app/assets/{{ city.picture}}?width=600&quality=80"
+                loading="lazy" 
+                fetchpriority="high"
+                alt="{{ city.address }}">
+            <img class="city-img"
+                src="https://fdnd-agency.directus.app/assets/{{ city.picture}}?width=600&quality=80"
+                loading="lazy" 
+                fetchpriority="high"
+                alt="{{ city.address }}">
+        {% else %}
+            <img class="city-img" src="/assets/download.png" loading="lazy" fetchpriority="high">
+        {% endif %}
+            </picture>
+            <h2> <a href="/dashboard/{{ city.city }}">{{ city.city }}</a></h2>
+    </section>
 {% endfor %}
 </main>
 </body>

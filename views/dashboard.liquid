@@ -32,23 +32,16 @@
 
     <section id="locaties" class="tab-content card">
         <section class="location-card">
-          {% for city in cities %}
-            <picture>
-              {% if city.picture %}
-                <source type="image/avif"
-                srcset="https://fdnd-agency.directus.app/assets/{{ city.picture }}?fit=cover&width=1600&quality=80" alt="{{ city.address }}">
-                <source type="image/webp"
-                srcset="https://fdnd-agency.directus.app/assets/{{ city.picture }}?fit=cover&width=1600&quality=80" alt="{{ city.address }}">
-                <img src="https://fdnd-agency.directus.app/assets/{{ city.picture }}?width=600&quality=80" alt="{{ city.address }}" loading="lazy" fetchpriority="high">
-                {% else %}
-                  <img src="/assets/download.png" loading="lazy" fetchpriority="high">
-                {% endif %}
-              </picture>
-            
-            <a href="/dashboard/{{ city.city }}/{{ city.address }}">
-                <p>{{ city.address }}</p>
-            </a>
-          {% endfor %}
+          <picture class="city-img">
+            {% if city.picture %}
+            <img class="city-img" src="https://fdnd-agency.directus.app/assets/{{ city.picture }}?width=600&quality=80" alt="{{ city.address }}" loading="lazy">
+            {% else %}
+            <img class="city-img" src="/assets/download.png" loading="lazy">
+            {% endif %}
+          </picture>
+          <a href="/dashboard/{{ city.city }}/{{ city.address }}">
+            <p>{{ city.address }}</p>
+          </a>
         </section>
       {% endfor %}
       <button class="add-button"><a href="/form">Voeg toe</a></button>
