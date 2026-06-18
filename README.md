@@ -2,8 +2,9 @@ Ontwerp en maak een data driven online concept voor een opdrachtgever
 
 De instructies voor deze opdracht staan in: [docs/INSTRUCTIONS.md](https://github.com/fdnd-task/proof-of-concept/blob/main/docs/INSTRUCTIONS.md)
 
-# Titel
+# Dashboard Coding the Curbs
 <!-- Geef je project een titel en schrijf in één zin wat het is -->
+
 
 ## Inhoudsopgave
 
@@ -15,6 +16,7 @@ De instructies voor deze opdracht staan in: [docs/INSTRUCTIONS.md](https://githu
   * [Licentie](#licentie)
 
 ## Beschrijving
+Dit project is een dashboard voor Coding the Curbs, een bedrijf dat zich bezig houdt met het dynamisch maken van de openbare gedeelde ruimte. De gebruikers kunnen op de site zogehete QuickScans per stad bekijken en per locatie observaties toevoegen.
 <!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
 <!-- Voeg een mooie poster visual toe 📸 -->
 <!-- Voeg een link toe naar Github Pages 🌐-->
