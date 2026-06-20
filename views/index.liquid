@@ -4,7 +4,7 @@
     <section class="index-grid">
 {% for city in cities %}
     <section class="city-container">
-        
+         <a href="/dashboard/{{ city.city }}">
         {% if city.picture %}
             <picture class="city-img">
                 <source type="image/avif"
@@ -26,7 +26,8 @@
             <img class="city-img" src="/assets/download.png" loading="lazy" fetchpriority="high" alt="{{ city.address }}">
         {% endif %}
             </picture>
-            <h2> <a href="/dashboard/{{ city.city }}">{{ city.city }}</a></h2>
+            <h2>{{ city.city }}</h2>
+            </a>
     </section>
 {% endfor %}
     <section class="city-container">
@@ -50,7 +51,7 @@
         <h2>Arnhem</h2>
     </section>
     <section class="city-container">
-        <img class="city-img" src="/assets/download.png" loading="eager" fetchpriority="high">
+        <img class="city-img" src="/assets/download.png" loading="eager" fetchpriority="high" alt="dummy-img">
         <h2>Zaandam</h2>
     </section>
 </section>
