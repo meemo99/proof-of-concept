@@ -11,7 +11,7 @@
                 srcset="https://fdnd-agency.directus.app/assets/{{ city.picture}}?width=600&quality=80"
                 loading="lazy" 
                 fetchpriority="high"
-                alt="{{ city.address }}"">
+                alt="{{ city.address }}">
                  <source type="image/webp"
                  srcset="https://fdnd-agency.directus.app/assets/{{ city.picture}}?width=600&quality=80"
                 loading="lazy" 
@@ -23,7 +23,7 @@
                 fetchpriority="high"
                 alt="{{ city.address }}">
         {% else %}
-            <img class="city-img" src="/assets/download.png" loading="lazy" fetchpriority="high">
+            <img class="city-img" src="/assets/download.png" loading="lazy" fetchpriority="high" alt="{{ city.address }}">
         {% endif %}
             </picture>
             <h2> <a href="/dashboard/{{ city.city }}">{{ city.city }}</a></h2>
