@@ -9,21 +9,26 @@
     --primary-color: #52599d;
     --secondary-color: #9c95ca;
     --tertiary-color: #c8c8e2;
+    --accent-color: #2f2f2e;
     --primary-bg: #e6e6f1;
     --primary-textcolor: white;
     --secondary-textcolor: black;
 
 }
 
-@view-transition {
-    navigation: auto;
+html {
+    @media(prefers-reduced-motion: no-preference) {
+        scroll-behavior: smooth;
+
+        @view-transition {
+            navigation: auto;
+        }
+    }
 }
-
-
 
 h1,
 h2 {
-    color: white;
+    color: var(--primary-textcolor);
 }
 
 body {
@@ -31,8 +36,14 @@ body {
     font-family: 'DM Sans', sans-serif;
 }
 
+main {
+    margin: 10px;
+}
+
+
+
 header {
-    background-color: white;
+    background-color: var(--primary-textcolor);
     height: auto;
     width: auto;
 }
@@ -59,17 +70,21 @@ header {
     justify-content: center;
     margin: 10px;
     text-align: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    &:hover {
+        transform: translateY(-12px) scale(1.02);
+        /* Card komt omhoog en wordt iets groter */
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
 }
 
-.city-img {
-    border-radius: 16px;
 
-}
 
 .tabs-container {
     display: flex;
     margin-bottom: -33px;
-    margin-left: -156px;
+    margin-left: -141px;
 
     @media(min-width: 45em) {
         margin-left: -456px;
@@ -84,7 +99,7 @@ header {
 .tab {
     background-color: var(--secondary-color);
     border-radius: 8px;
-    color: white;
+    color: var(--primary-textcolor);
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
@@ -95,7 +110,7 @@ header {
     z-index: 0;
 
     &:hover {
-        background-color: var(--tertiary-color);
+        transform: translateY(-10px);
     }
 
     &.active {
@@ -105,14 +120,14 @@ header {
     }
 }
 
-li {
-    color: white;
+dt {
+    color: var(--primary-textcolor);
     margin-top: 20px;
     list-style: none;
 }
 
 a {
-    color: white;
+    color: var(--primary-textcolor);
     text-decoration: none;
 }
 
@@ -131,18 +146,22 @@ a {
     flex-direction: column;
     justify-content: center;
     height: auto;
-    width: 370px;
+    margin: 10px;
+    width: 355px;
     padding-top: 5px;
     position: relative;
     z-index: 1;
 
     @media (min-width: 45em) {
         width: 670px;
+        margin-inline: auto;
     }
 
-    @media (min-width: 85em) {}
-
+    @media (min-width: 85em) {
+        margin-inline: auto;
+    }
 }
+
 
 .card-container {
     display: flex;
@@ -211,7 +230,6 @@ a {
     @media (min-width: 85em) {
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
-
     }
 }
 
@@ -220,7 +238,6 @@ a {
 
 
     @media (min-width: 45em) {
-
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
@@ -247,17 +264,28 @@ a {
     @media (min-width: 85em) {
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
-
     }
 }
 
 .location-card {
+    width: 90%;
     margin: 10px;
     margin-top: 14px;
     text-align: center;
     background-color: var(--primary-color);
     border-radius: 16px;
-    ;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    &:hover {
+        transform: translateY(-12px) scale(1.02);
+        /* Card komt omhoog en wordt iets groter */
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.city-img {
+    border-radius: 16px;
+    width: 100%;
 }
 
 #locaties {
@@ -270,13 +298,30 @@ img {
     width: auto;
 }
 
+.detail-img {
+    border-radius: 16px;
+    width: 100%;
+    height: 85%;
+}
+
 .add-button {
     border-radius: 38px;
     background-color: var(--primary-color);
-    color: white;
-    height: 61px;
-    width: 70px;
+    color: var(--primary-textcolor);
+    height: 38px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+
+    transition: 0.5s ease-in-out;
+
+    &:hover {
+        background-color: var(--tertiary-color);
+        color: var(--accent-color);
+        scale: 1.15;
+    }
 
 }
 
@@ -290,17 +335,50 @@ img {
 }
 
 .data {
-    display: flex;
-    flex-direction: column;
+    width: 330px;
+    margin-bottom: 10px;
+
+    @media (min-width: 45em) {}
 }
 
+
 .chart {
-    background: conic-gradient(#E6E6F1 45%, #9C95CA 0deg 70%, #C8C8E2 0deg);
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
-    margin: 10px;
-    padding-top: 50%;
-    padding-right: 20px;
-    width: 50%;
+    background: conic-gradient(var(--primary-bg) 0% var(--valid),
+            var(--accent-color)var(--valid) var(--neutral),
+            var(--secondary-color) var(--neutral) var(--invalid));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: var(--tertiary-color);
+    border-radius: 16px;
+    height: 117px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    width: 90%;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-color {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    flex-shrink: 0;
 }
 
 form {
@@ -322,17 +400,21 @@ textarea[name="comment"] {
     height: auto;
 }
 
+.cities {
+    grid-column: 1/-1;
+}
+
 button {
     height: 38px;
     border-radius: 16px;
     background-color: var(--tertiary-color);
     border: none;
-    color: var(--primary-color);
+    color: var(--accent-color);
     transition: 0.5s ease-in-out;
 
     &:hover {
         background-color: var(--secondary-color);
-        color: var(--tertiary-color);
+        color: var(--primary-bg);
         scale: 1.15;
     }
 }
@@ -358,8 +440,7 @@ textarea {
 }
 
 footer {
-    background-color: black;
+    background-color: var(--secondary-textcolor);
     height: auto;
     width: auto;
-
 }
