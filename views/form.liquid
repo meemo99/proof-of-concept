@@ -1,40 +1,68 @@
 {% render 'partials/head.liquid' %}
 <section class="card">
   <div class="upload-dummy"></div>
-<form method="POST" action="/quickscan-form">
-  <input type="hidden" name="city" value="{{ city }}">
-  <textarea name="address" rows="2" placeholder="Adres"></textarea>
 
-  <input class="form-input" name="status" list="status" placeholder="Status">
-  <datalist id="status"> 
-    <option value="Vrij">
-    <option value="Bezet">
-    <option value="Overtreding">
-    <option value="Bestaat Niet">
-  </datalist>
-  <input class="form-input" name="monitoring_suitability" list="monitoring" placeholder="Monitoring">
-  <datalist id="monitoring">
-    <option value="Geschikt">
-    <option value="Zeer Geschikt">
-    <option value="Ongeschikt">
-    <option value="Neutraal">
-  </datalist>
+  <form method="POST" action="/quickscan-form">
+    
+    {% if success %}
+      <div class="alert alert-success">
+        <p>✓ Opgeslagen</p>
+        <span class="succes"></span>
+      </div>
+    {% endif %}
 
-  <input class="form-input" name="smartzone_suitability" list="smartzone" placeholder="Smart Zone">
-  <datalist id="smartzone">
-    <option value="Geschikt">
-    <option value="Zeer Geschikt">
-    <option value="Ongeschikt">
-    <option value="Neutraal">
-  </datalist>
-  <textarea name="traffic_sign" rows="2" placeholder="Verkeersbord"></textarea>
+    {% if error == 'missing-fields' %}ß
+      <div class="alert alert-error">
+        <p>✗ Vul alle velden in!</p>
+        <span class="error"></span>
+      </div>
+    {% elsif error == 'post-failed' %}
+      <div class="alert alert-error">
+        <p>✗ Er is iets misgegaan, probeer het opnieuw.</p>
+        <span class="error"></span>
+      </div>
+    {% endif %}
 
-  <textarea name="time" rows="2" placeholder="Tijd"></textarea>
-  <textarea name="length" rows="2" placeholder="Lengte"></textarea>
+    <input class="form-input cities" name="city" list="cities" placeholder="Stad">
+      <datalist id="cities">
+          {% for name in quickScanCities %}
+              <option value="{{name.city}}"></option>
+          {% endfor %}
+      </datalist>
 
-  <textarea name="comment" rows="3" placeholder="Opmerkingen"></textarea>
+    <textarea name="address" rows="2" placeholder="Adres"></textarea>
 
-  <button type="submit">Opslaan</button>
-</form>
+    <input class="form-input" name="status" list="status" placeholder="Status">
+    <datalist id="status"> 
+      <option value="Vrij">
+      <option value="Bezet">
+      <option value="Overtreding">
+      <option value="Bestaat Niet">
+    </datalist>
+    <input class="form-input" name="monitoring_suitability" list="monitoring" placeholder="Monitoring">
+    <datalist id="monitoring">
+      <option value="Geschikt">
+      <option value="Zeer Geschikt">
+      <option value="Ongeschikt">
+      <option value="Neutraal">
+    </datalist>
+
+    <input class="form-input" name="smartzone_suitability" list="smartzone" placeholder="Smart Zone">
+    <datalist id="smartzone">
+      <option value="Geschikt">
+      <option value="Zeer Geschikt">
+      <option value="Ongeschikt">
+      <option value="Neutraal">
+    </datalist>
+    <textarea name="traffic_sign" rows="2" placeholder="Verkeersbord"></textarea>
+
+    <input class="form-input" name="time" rows="2" placeholder="Tijd" required>
+    <input class="form-input" name="length" rows="2" placeholder="Lengte" required>
+
+    <textarea name="comment" rows="3" placeholder="Opmerkingen"></textarea>
+
+    <button type="submit">Opslaan</button>
+  </form>
+
 </section>
 {% render 'partials/foot.liquid' %}
