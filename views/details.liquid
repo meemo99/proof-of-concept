@@ -1,6 +1,4 @@
-
 {% render 'partials/head.liquid' %}
-
 
 <nav arialabel="breadcrumb" class="breadcrumb">
     <a href="/">← Homepagina</a>
@@ -10,33 +8,28 @@
       <span>{{ spot.address }}</span>
       </nav>
 <section class='details-card card'>
-<h1>{{ spot.address }}</h1>
-
-
-<picture>
-            {% if city.picture %}
-            <img class="detail-img" src="https://fdnd-agency.directus.app/assets/{{ spot.picture }}?width=1200&quality=80" alt="" loading="lazy" width="300" height="300">
-            {% else %}
-            <img class="detail-img" src="/assets/download.png" loading="eager" fetchpriority="high" width="300" height="300">
-            {% endif %}
-          </picture>
-    <section class="data">
-      
-        <dl>
-          <dt>Status</dt>
-            <dd class="tag ">{{ spot.status }}</dd>
-          <dt>Length</dt>
-            <dd class="tag">{{ spot.length }}</dd>
-          <dt>Time</dt>
-            <dd class="tag">{{ spot.time }}</dd>
-          <dt>Trafficsign</dt>
-            <dd class="tag">{{ spot.traffic_sign }}</dd>
-          <dt>Monitoring Suitability</dt>
-            <dd class="tag">{{ spot.monitoring_suitability }}</dd>
-          <dt>Smart Zone Suitability</dt>
-            <dd class="tag">{{ spot.smartzone_suitability }}</dd>
-        </dl>
-    </section>
+  <h1>{{ spot.address }}</h1>
+  <picture>
+    {% if city.picture %}
+      <img class="detail-img" src="https://fdnd-agency.directus.app/assets/{{ spot.picture }}?width=1200&quality=80" alt="" loading="lazy" width="300" height="300">
+    {% else %}
+      <img class="detail-img" src="/assets/download.png" loading="eager" fetchpriority="high" width="120" height="300">
+    {% endif %}
+  </picture>
+  <dl class="data"> 
+    <dt>Status</dt>
+      <dd class="tag ">{{ spot.status }}</dd>
+    <dt>Length</dt>
+      <dd class="tag">{{ spot.length }}</dd>
+    <dt>Time</dt>
+      <dd class="tag">{{ spot.time }}</dd>
+    <dt>Trafficsign</dt>
+      <dd class="tag">{{ spot.traffic_sign }}</dd>
+    <dt>Monitoring Suitability</dt>
+      <dd class="tag">{{ spot.monitoring_suitability }}</dd>
+    <dt>Smart Zone Suitability</dt>
+      <dd class="tag">{{ spot.smartzone_suitability }}</dd>
+  </dl>
 </section>
 </body>
 
