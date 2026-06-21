@@ -12,12 +12,13 @@
 <h1>{{ spot.address }}</h1>
 
 
-<img
-  src="https://fdnd-agency.directus.app/assets/{{ spot.picture }}?width=600&quality=80"
-  alt="{{ spot.address }}"
-  loading="lazy" 
-  fetchpriority="high">
-
+<picture>
+            {% if city.picture %}
+            <img class="detail-img" src="https://fdnd-agency.directus.app/assets/{{ spot.picture }}?width=1200&quality=80" alt="" loading="lazy" width="300" height="300">
+            {% else %}
+            <img class="detail-img" src="/assets/download.png" loading="eager" fetchpriority="high" width="300" height="300">
+            {% endif %}
+          </picture>
     <section class="data">
       
         <dl>
