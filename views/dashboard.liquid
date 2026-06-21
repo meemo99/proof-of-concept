@@ -90,6 +90,7 @@
     <section id="locaties" class="tab-content card">
       {% for city in cities %}
         <section class="location-card">
+          <a href="/dashboard/{{ city.city }}/{{ city.address }}">
           <picture class="city-img">
             {% if city.picture %}
             <img class="city-img" src="https://fdnd-agency.directus.app/assets/{{ city.picture }}?width=600&quality=80" alt="{{ city.address }}" loading="lazy">
@@ -97,12 +98,12 @@
             <img class="city-img" src="/assets/download.png" loading="lazy">
             {% endif %}
           </picture>
-          <a href="/dashboard/{{ city.city }}/{{ city.address }}">
+          
             <p>{{ city.address }}</p>
           </a>
         </section>
       {% endfor %}
-      <button class="add-button"><a href="/form">Voeg toe</a></button>
+      <a class="add-button" href="/form">Voeg toe</a>
     </section>
   </section>
 </main>
