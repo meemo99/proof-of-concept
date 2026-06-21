@@ -18,15 +18,14 @@
                 width="300" height="300"
                 loading="lazy" 
                 fetchpriority="high"
-                alt="{{ city.address }}">
+                alt="{{ city.city }}">
             <img class="city-img"
                 src="https://fdnd-agency.directus.app/assets/{{ city.picture}}?width=600&quality=80"
                 width="300" height="300"
                 loading="lazy" 
                 fetchpriority="high"
-                alt="{{ city.address }}">
+                alt="{{ city.city }}">
         {% else %}
-            <img class="city-img" src="/assets/download.png" loading="lazy" fetchpriority="high" alt="{{ city.address }}">
             <img class="city-img" src="/assets/download.png" loading="lazy" fetchpriority="high" alt="{{ city.city }}" width="300" height="300">
         {% endif %}
             </picture>
