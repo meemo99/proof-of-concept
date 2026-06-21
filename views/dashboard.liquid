@@ -1,33 +1,90 @@
 {% render 'partials/head.liquid' %}
+{% comment %} Monitoring geschiktheid {% endcomment %}
+{% assign filteredMonitoringValid = allData | where: "monitoring_suitability", "geschikt" %}
+{% assign filteredMonitoringNeutral = allData | where: "monitoring_suitability", "neutraal" %}
+{% assign filteredMonitoringInvalid = allData | where: "monitoring_suitability", "ongeschikt" %}
+
+{% assign percentageMonitoringValid = filteredMonitoringValid.size | times: 100.0 | divided_by: allData.size | round %}
+{% assign percentageMonitoringNeutral = filteredMonitoringNeutral.size | times: 100.0 | divided_by: allData.size | round %}
+{% assign percentageMonitoringInvalid = filteredMonitoringInvalid.size | times: 100.0 | divided_by: allData.size | round %}
+
+{% assign monitoringValid = percentageMonitoringValid %}
+{% assign monitoringNeutral = monitoringValid | plus: percentageMonitoringNeutral %}
+{% assign monitoringInvalid = monitoringNeutral | plus: percentageMonitoringInvalid %}
+
+
+{% comment %} SmartZone geschiktheid {% endcomment %}
+{% assign filteredSmartZoneValid = allData | where: "smartzone_suitability", "geschikt" %}
+{% assign filteredSmartZoneNeutral = allData | where: "smartzone_suitability", "neutraal" %}
+{% assign filteredSmartZoneInvalid = allData | where: "smartzone_suitability", "ongeschikt" %}
+
+{% assign percentageSmartZoneValid = filteredSmartZoneValid.size | times: 100.0 | divided_by: allData.size | round %}
+{% assign percentageSmartZoneNeutral = filteredSmartZoneNeutral.size | times: 100.0 | divided_by: allData.size | round %}
+{% assign percentageSmartZoneInvalid = filteredSmartZoneInvalid.size | times: 100.0 | divided_by: allData.size | round %}
+
+{% assign smartZoneValid = percentageSmartZoneValid %}
+{% assign smartZoneNeutral = smartZoneValid | plus: percentageSmartZoneNeutral %}
+{% assign smartZoneInvalid = smartZoneNeutral | plus: percentageSmartZoneInvalid %}
+
+
 <main>
   <nav arialabel="breadcrumb" class="breadcrumb">
     <a href="/">← Homepagina</a>
-      <span>/</span>
-      <span>{{ cityName }}</span>
-      </nav>
+    <span>/</span>
+    <span>{{ cityName }}</span>
+  </nav>
   <h1> QuickScan {{ cityName }}</h1>
   
-
   <section class="card-container">
     <nav arialabel="tabs" class="tabs-container">
       <a href="#analytics" class="tab active">Analytics</a>
       <a href="#locaties" class="tab">Locaties</a>
     </nav>
 
+    
     <section id="analytics" class='tab-content card'>
-        <section class="monitoring total-data">
-            <p><strong>11/38</strong></p>
-            <br> <p>Geschikt voor Monitoring</p>
-        </section>
-        <section class="smart-zone total-data">
-            <p><strong>11/38</strong> </p>
-            <br><p>Geschikt voor Smart Zone</p>
-        </section>
-        
-        <section class="chart">
-        </section>
-        <section class="chart">
-        </section>
+      <section class="monitoring total-data"> 
+          <p><strong>{{ filteredMonitoringValid.size }}/{{ allData.size }}</strong></p>
+          <br> <p>Geschikt voor <strong>Monitoring</strong></p>
+      </section>
+
+      <section class="smart-zone total-data">
+        <p><strong>{{ filteredSmartZoneValid.size }}/{{ allData.size }}</strong></p>
+        <br><p>Geschikt voor <strong>Smart Zone</strong></p>
+      </section>
+
+      <div class="chart-legend">
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: var(--primary-bg);"></span>
+          <p>Geschikt ({{ percentageMonitoringValid }}%)</p>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color:var(--accent-color);"></span>
+          <p>Neutraal ({{ percentageMonitoringNeutral }}%)</p>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: var(--secondary-color);"></span>
+          <p>Ongeschikt ({{ percentageMonitoringInvalid }}%)</p>
+        </div>
+      </div>
+
+      <div class="chart-legend">
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: var(--primary-bg);"></span>
+          <p>Geschikt ({{ percentageSmartZoneValid }}%)</p>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color:var(--accent-color);"></span>
+          <p>Neutraal ({{ percentageSmartZoneNeutral }}%)</p>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: var(--secondary-color);"></span>
+          <p>Ongeschikt ({{ percentageSmartZoneInvalid }}%)</p>
+        </div>
+      </div>
+       <section class="chart" style="--valid: {{ monitoringValid }}%; --neutral: {{ monitoringNeutral }}%; --invalid: {{ monitoringInvalid }}%;"></section>
+       <section class="chart" style="--valid: {{ smartZoneValid }}%; --neutral: {{ smartZoneNeutral }}%; --invalid: {{ smartZoneInvalid }}%;"></section>
+
     </section>
 
     <section id="locaties" class="tab-content card">
