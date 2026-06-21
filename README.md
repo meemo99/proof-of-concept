@@ -16,7 +16,7 @@ De instructies voor deze opdracht staan in: [docs/INSTRUCTIONS.md](https://githu
   * [Licentie](#licentie)
 
 ## Beschrijving
-Dit project is een dashboard voor Coding the Curbs, een startup dat zich bezig houdt met het dynamisch maken van de openbare gedeelde ruimte. De gebruikers kunnen op de site zogehete QuickScans per stad bekijken en per locatie observaties toevoegen.
+Dit [project](https://proof-of-concept-5k9s.onrender.com/) is een dashboard voor Coding the Curbs, een startup dat zich bezig houdt met het dynamisch maken van de openbare gedeelde ruimte. De gebruikers kunnen op de site zogehete QuickScans per stad bekijken en per locatie observaties toevoegen.
 <!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
 <!-- Voeg een mooie poster visual toe 📸 -->
 <!-- Voeg een link toe naar Github Pages 🌐-->
@@ -47,17 +47,44 @@ De website bestaat uit 3 verschillende pagina's;
 
 
 
-
-
-
 ## Gebruik
 <!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
+
+##### Dynamische Data
+Op de dashboardpagina staat een card-component waarin data is ingeladen om overzicht te houden hoeveel locaties geschikt zijn voor monitoring en voor een smartzone. Hierbij hoort ook een cirkeldiagram waarbij het percentage geschiktheid te zien is van Monitoring en Smartzone
+
+<img width="709" height="739" alt="image" src="https://github.com/user-attachments/assets/ba1a0e1d-5264-4aba-b20a-ab1edd8e5bd9" />
+
+
+##### Tab-navigatie
+Bij dit component hoort ook de tab-navigatie, waarbij je kan switchen tussen de "Analytics" en "Locaties".
+
+https://github.com/user-attachments/assets/28a50096-cea3-4639-a2cd-9528c59624f5
+
+
+
 
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
 
+Voor de [Loading State](https://github.com/meemo99/proof-of-concept/blob/main/public/scripts/client-side.js) is gebruik gemaakt van JS om het formulier te enhancen.
+
+https://github.com/user-attachments/assets/303d4895-a8fa-49a5-bc0b-e30dd91bc165
+
+
+
 ## Installatie
 <!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
+
+1. Ga naar nodejs.org en installeer Node.js 24.13.0 LTS (Long Term Support).
+
+2. Fork de repository en open het project in VSCodium.
+
+3. Open de terminal in VSCodium en voer het volgende commando uit: npm install
+
+Start het project met: npm start Het project is nu bereikbaar op http://localhost:8000.
+
+Wanneer je klaar bent, stop je de server met Control + C in de terminal.
 
 ## Bronnen
 
