@@ -19,20 +19,21 @@
   fetchpriority="high">
 
     <section class="data">
-        <ul>
-          <p>Status</p>
-            <li class="tag">{{ spot.status }}</li>
-          <p>Length</p>
-            <li class="tag">{{ spot.length }}</li>
-          <p>Time</p>
-            <li class="tag">{{ spot.time }}</li>
-          <p>Trafficsign</p>
-            <li class="tag">{{ spot.traffic_sign }}</li>
-          <p>Monitoring Suitability</p>
-            <li class="tag">{{ spot.monitoring_suitability }}</li>
-          <p>Smart Zone Suitability</p>
-            <li class="tag">{{ spot.smartzone_suitability }}</li>
-        </ul>
+      
+        <dl>
+          <dt>Status</dt>
+            <dd class="tag ">{{ spot.status }}</dd>
+          <dt>Length</dt>
+            <dd class="tag">{{ spot.length }}</dd>
+          <dt>Time</dt>
+            <dd class="tag">{{ spot.time }}</dd>
+          <dt>Trafficsign</dt>
+            <dd class="tag">{{ spot.traffic_sign }}</dd>
+          <dt>Monitoring Suitability</dt>
+            <dd class="tag">{{ spot.monitoring_suitability }}</dd>
+          <dt>Smart Zone Suitability</dt>
+            <dd class="tag">{{ spot.smartzone_suitability }}</dd>
+        </dl>
     </section>
 </section>
 </body>
