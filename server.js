@@ -33,6 +33,7 @@ app.get('/dashboard/:city', async function (req, res) {
     })
 })
 
+
 app.get('/dashboard/:city/:address', async function (req, res) {
     const apiResponse = await fetch(`https://fdnd-agency.directus.app/items/ctc_smartzone/?filter[address][_eq]=${req.params.address}`)
     const apiResponseJSON = await apiResponse.json()
@@ -42,19 +43,19 @@ app.get('/dashboard/:city/:address', async function (req, res) {
 app.get('/form', async function (req, res) {
     const apiResponse = await fetch(`https://fdnd-agency.directus.app/items/ctc_smartzone/`)
     const apiResponseJSON = await apiResponse.json()
-    res.render('form.liquid')
+    res.render('form.liquid', { quickScanCities: apiResponseJSON.data })
 })
 
 app.post('/quickscan-form', async function (req, res) {
-    console.log('req.body:', req.body)  // check if form data is coming in
 
     let postResponse = await fetch('https://fdnd-agency.directus.app/items/ctc_smartzone/', {
         method: 'POST',
         body: JSON.stringify({
+            city: req.body.city,
             comment: req.body.comment,
             address: req.body.address,
-            // length: req.body.length,
-            // time: req.body.time,
+            length: req.body.length,
+            time: req.body.time,
             traffic_sign: req.body.trafficsign,
             status: req.body.status,
             monitoring_suitability: req.body.monitoring_suitability,
@@ -65,9 +66,7 @@ app.post('/quickscan-form', async function (req, res) {
         }
     })
 
-    console.log('Directus status:', postResponse.status)  // check Directus response
     const responseBody = await postResponse.json()
-    console.log('Directus response:', JSON.stringify(responseBody, null, 2))       // see exact error
 
     if (!postResponse.ok) {
         return res.send("Error!")
