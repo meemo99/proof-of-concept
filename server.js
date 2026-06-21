@@ -25,9 +25,11 @@ app.get('/', async function (req, res) {
 app.get('/dashboard/:city', async function (req, res) {
     const cityResponse = await fetch(`https://fdnd-agency.directus.app/items/ctc_smartzone/?filter[city][_eq]=${req.params.city}`)
     const cityResponseJSON = await cityResponse.json()
+
     res.render('dashboard.liquid', {
         cities: cityResponseJSON.data,
-        cityName: req.params.city
+        cityName: req.params.city,
+        allData: cityResponseJSON.data
     })
 })
 
