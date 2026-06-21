@@ -8,9 +8,6 @@
 {% assign percentageMonitoringNeutral = filteredMonitoringNeutral.size | times: 100.0 | divided_by: allData.size | round %}
 {% assign percentageMonitoringInvalid = filteredMonitoringInvalid.size | times: 100.0 | divided_by: allData.size | round %}
 
-{% assign monitoringValid = percentageMonitoringValid %}
-{% assign monitoringNeutral = monitoringValid | plus: percentageMonitoringNeutral %}
-{% assign monitoringInvalid = monitoringNeutral | plus: percentageMonitoringInvalid %}
 
 
 {% comment %} SmartZone geschiktheid {% endcomment %}
@@ -22,9 +19,6 @@
 {% assign percentageSmartZoneNeutral = filteredSmartZoneNeutral.size | times: 100.0 | divided_by: allData.size | round %}
 {% assign percentageSmartZoneInvalid = filteredSmartZoneInvalid.size | times: 100.0 | divided_by: allData.size | round %}
 
-{% assign smartZoneValid = percentageSmartZoneValid %}
-{% assign smartZoneNeutral = smartZoneValid | plus: percentageSmartZoneNeutral %}
-{% assign smartZoneInvalid = smartZoneNeutral | plus: percentageSmartZoneInvalid %}
 
 
 <main>
@@ -82,8 +76,8 @@
           <p>Ongeschikt ({{ percentageSmartZoneInvalid }}%)</p>
         </div>
       </div>
-       <section class="chart" style="--valid: {{ monitoringValid }}%; --neutral: {{ monitoringNeutral }}%; --invalid: {{ monitoringInvalid }}%;"></section>
-       <section class="chart" style="--valid: {{ smartZoneValid }}%; --neutral: {{ smartZoneNeutral }}%; --invalid: {{ smartZoneInvalid }}%;"></section>
+       <section class="chart" style="--valid: {{ percentageMonitoringValid }}%; --neutral: {{ percentageMonitoringNeutral }}%; --invalid: {{ percentageMonitoringInvalid }}%;"></section>
+       <section class="chart" style="--valid: {{ percentageSmartZoneValid }}%; --neutral: {{ percentageSmartZoneNeutral }}%; --invalid: {{ percentageSmartZoneInvalid }}%;"></section>
 
     </section>
 

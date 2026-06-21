@@ -347,8 +347,8 @@ img {
     height: 160px;
     border-radius: 50%;
     background: conic-gradient(var(--primary-bg) 0% var(--valid),
-            var(--accent-color)var(--valid) var(--neutral),
-            var(--secondary-color) var(--neutral) var(--invalid));
+            var(--accent-color) var(--valid) calc(var(--valid) + var(--neutral)),
+            var(--secondary-color) calc(var(--valid) + var(--neutral)) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
